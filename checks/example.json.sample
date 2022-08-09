@@ -1,0 +1,5 @@
+{
+  "company": "Acme",
+  "message": "%d unread mail from Acme",
+  "filter": "is:unread in:inbox from:*@acmeinc.com"
+}
