@@ -1,5 +1,10 @@
 package gmail
 
+/*
+NOTE: Most (if not all) of the code here is from the official Google example for working with Gmail.
+I only structured it a little differently (maybe)
+*/
+
 import (
 	"encoding/json"
 	"fmt"
