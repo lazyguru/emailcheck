@@ -12,9 +12,9 @@ I'm using this to watch my inbox and notify me when I get new emails from specif
 * A Google account with Gmail enabled.
 
 ## Setup
-* Add json files to the "checks" directory (see example.json.sample)
-* Download credentials.json file from Google Cloud Platform project and store in directory next to `main`
+* Add json files to the "configs/checks" directory (see example.json.sample)
+* Download credentials.json file from Google Cloud Platform project and store in the configs directory
 
 ## Run
-* Execute `./main`
+* Execute `./bin/emailcheck`
   * On first run, it will output a link. After following this and authenticating, copy the code from the URL and paste it in your terminal and press ENTER

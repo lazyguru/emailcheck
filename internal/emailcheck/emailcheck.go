@@ -3,7 +3,7 @@ package emailcheck
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/lazyguru/emailcheck/emailcheck/gmailclient"
+	client "github.com/lazyguru/emailcheck/internal/gmail"
 	"google.golang.org/api/gmail/v1"
 	"log"
 	"os"
@@ -13,7 +13,7 @@ import (
 var srv *gmail.Service
 
 func Initialize() error {
-	service, err := gmailclient.GetService()
+	service, err := client.GetService()
 	srv = service
 	return err
 }
@@ -45,7 +45,7 @@ func sendNotice(data *CheckData) error {
 }
 
 func getDataFiles() ([]CheckData, error) {
-	var dir, err = os.ReadDir("checks")
+	var dir, err = os.ReadDir(Checksdir)
 	if err != nil {
 		return nil, err
 	}

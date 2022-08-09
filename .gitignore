@@ -35,14 +35,9 @@ go.work
 .idea
 .vscode
 
-# Sensitive files
-credentials.json
-token.json
-
 # Logs
 /*.log
 /*.log.*
 
 # Executable
-/main
-!main.go
+/bin/

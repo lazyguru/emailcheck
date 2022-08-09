@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+var Checksdir = "configs/checks/"
+
 type CheckData struct {
 	filename string
 	notify   bool
@@ -19,7 +21,7 @@ type CheckData struct {
 
 func (data *CheckData) Save() {
 	fmt.Printf("Saving CheckData to file: %s\n", data.filename)
-	f, err := os.OpenFile("checks/"+data.filename, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
+	f, err := os.OpenFile(Checksdir+data.filename, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Fatalf("Unable to save checkdata to file: %v", err)
 	}
@@ -31,7 +33,7 @@ func (data *CheckData) Save() {
 }
 
 func (data *CheckData) Load(filename string) error {
-	f, err := os.Open("checks/" + filename)
+	f, err := os.Open(Checksdir + filename)
 	if err != nil {
 		return err
 	}

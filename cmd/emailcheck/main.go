@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/lazyguru/emailcheck/emailcheck"
+	"github.com/lazyguru/emailcheck/internal/emailcheck"
 	"log"
 )
 
