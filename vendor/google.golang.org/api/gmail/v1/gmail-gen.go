@@ -8,35 +8,35 @@
 //
 // For product documentation, see: https://developers.google.com/gmail/api/
 //
-// Creating a client
+// # Creating a client
 //
 // Usage example:
 //
-//   import "google.golang.org/api/gmail/v1"
-//   ...
-//   ctx := context.Background()
-//   gmailService, err := gmail.NewService(ctx)
+//	import "google.golang.org/api/gmail/v1"
+//	...
+//	ctx := context.Background()
+//	gmailService, err := gmail.NewService(ctx)
 //
 // In this example, Google Application Default Credentials are used for authentication.
 //
 // For information on how to create and obtain Application Default Credentials, see https://developers.google.com/identity/protocols/application-default-credentials.
 //
-// Other authentication options
+// # Other authentication options
 //
 // By default, all available scopes (see "Constants") are used to authenticate. To restrict scopes, use option.WithScopes:
 //
-//   gmailService, err := gmail.NewService(ctx, option.WithScopes(gmail.GmailSettingsSharingScope))
+//	gmailService, err := gmail.NewService(ctx, option.WithScopes(gmail.GmailSettingsSharingScope))
 //
 // To use an API key for authentication (note: some APIs do not support API keys), use option.WithAPIKey:
 //
-//   gmailService, err := gmail.NewService(ctx, option.WithAPIKey("AIza..."))
+//	gmailService, err := gmail.NewService(ctx, option.WithAPIKey("AIza..."))
 //
 // To use an OAuth token (e.g., a user token obtained via a three-legged OAuth flow), use option.WithTokenSource:
 //
-//   config := &oauth2.Config{...}
-//   // ...
-//   token, err := config.Exchange(ctx, ...)
-//   gmailService, err := gmail.NewService(ctx, option.WithTokenSource(config.TokenSource(ctx, token)))
+//	config := &oauth2.Config{...}
+//	// ...
+//	token, err := config.Exchange(ctx, ...)
+//	gmailService, err := gmail.NewService(ctx, option.WithTokenSource(config.TokenSource(ctx, token)))
 //
 // See https://godoc.org/google.golang.org/api/option/ for details on options.
 package gmail // import "google.golang.org/api/gmail/v1"
@@ -2269,8 +2269,8 @@ type UsersGetProfileCall struct {
 
 // GetProfile: Gets the current user's Gmail profile.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersService) GetProfile(userId string) *UsersGetProfileCall {
 	c := &UsersGetProfileCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -2352,17 +2352,17 @@ func (c *UsersGetProfileCall) Do(opts ...googleapi.CallOption) (*Profile, error)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Profile{
 		ServerResponse: googleapi.ServerResponse{
@@ -2419,8 +2419,8 @@ type UsersStopCall struct {
 
 // Stop: Stop receiving push notifications for the given user mailbox.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersService) Stop(userId string) *UsersStopCall {
 	c := &UsersStopCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -2484,7 +2484,7 @@ func (c *UsersStopCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -2529,8 +2529,8 @@ type UsersWatchCall struct {
 // Watch: Set up or update a push notification watch on the given user
 // mailbox.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersService) Watch(userId string, watchrequest *WatchRequest) *UsersWatchCall {
 	c := &UsersWatchCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -2605,17 +2605,17 @@ func (c *UsersWatchCall) Do(opts ...googleapi.CallOption) (*WatchResponse, error
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &WatchResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -2676,8 +2676,8 @@ type UsersDraftsCreateCall struct {
 
 // Create: Creates a new draft with the `DRAFT` label.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersDraftsService) Create(userId string, draft *Draft) *UsersDraftsCreateCall {
 	c := &UsersDraftsCreateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -2802,17 +2802,17 @@ func (c *UsersDraftsCreateCall) Do(opts ...googleapi.CallOption) (*Draft, error)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	rx := c.mediaInfo_.ResumableUpload(res.Header.Get("Location"))
 	if rx != nil {
@@ -2828,7 +2828,7 @@ func (c *UsersDraftsCreateCall) Do(opts ...googleapi.CallOption) (*Draft, error)
 		}
 		defer res.Body.Close()
 		if err := googleapi.CheckResponse(res); err != nil {
-			return nil, err
+			return nil, gensupport.WrapError(err)
 		}
 	}
 	ret := &Draft{
@@ -2907,9 +2907,9 @@ type UsersDraftsDeleteCall struct {
 // Delete: Immediately and permanently deletes the specified draft. Does
 // not simply trash it.
 //
-// - id: The ID of the draft to delete.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the draft to delete.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersDraftsService) Delete(userId string, id string) *UsersDraftsDeleteCall {
 	c := &UsersDraftsDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -2975,7 +2975,7 @@ func (c *UsersDraftsDeleteCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -3027,9 +3027,9 @@ type UsersDraftsGetCall struct {
 
 // Get: Gets the specified draft.
 //
-// - id: The ID of the draft to retrieve.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the draft to retrieve.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersDraftsService) Get(userId string, id string) *UsersDraftsGetCall {
 	c := &UsersDraftsGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -3041,17 +3041,25 @@ func (r *UsersDraftsService) Get(userId string, id string) *UsersDraftsGetCall {
 // draft in.
 //
 // Possible values:
-//   "minimal" - Returns only email message ID and labels; does not
+//
+//	"minimal" - Returns only email message ID and labels; does not
+//
 // return the email headers, body, or payload.
-//   "full" (default) - Returns the full email message data with body
+//
+//	"full" (default) - Returns the full email message data with body
+//
 // content parsed in the `payload` field; the `raw` field is not used.
 // Format cannot be used when accessing the api using the gmail.metadata
 // scope.
-//   "raw" - Returns the full email message data with body content in
+//
+//	"raw" - Returns the full email message data with body content in
+//
 // the `raw` field as a base64url encoded string; the `payload` field is
 // not used. Format cannot be used when accessing the api using the
 // gmail.metadata scope.
-//   "metadata" - Returns only email message ID, labels, and email
+//
+//	"metadata" - Returns only email message ID, labels, and email
+//
 // headers.
 func (c *UsersDraftsGetCall) Format(format string) *UsersDraftsGetCall {
 	c.urlParams_.Set("format", format)
@@ -3134,17 +3142,17 @@ func (c *UsersDraftsGetCall) Do(opts ...googleapi.CallOption) (*Draft, error) {
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Draft{
 		ServerResponse: googleapi.ServerResponse{
@@ -3226,8 +3234,8 @@ type UsersDraftsListCall struct {
 
 // List: Lists the drafts in the user's mailbox.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersDraftsService) List(userId string) *UsersDraftsListCall {
 	c := &UsersDraftsListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -3340,17 +3348,17 @@ func (c *UsersDraftsListCall) Do(opts ...googleapi.CallOption) (*ListDraftsRespo
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListDraftsResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -3453,8 +3461,8 @@ type UsersDraftsSendCall struct {
 // Send: Sends the specified, existing draft to the recipients in the
 // `To`, `Cc`, and `Bcc` headers.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersDraftsService) Send(userId string, draft *Draft) *UsersDraftsSendCall {
 	c := &UsersDraftsSendCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -3579,17 +3587,17 @@ func (c *UsersDraftsSendCall) Do(opts ...googleapi.CallOption) (*Message, error)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	rx := c.mediaInfo_.ResumableUpload(res.Header.Get("Location"))
 	if rx != nil {
@@ -3605,7 +3613,7 @@ func (c *UsersDraftsSendCall) Do(opts ...googleapi.CallOption) (*Message, error)
 		}
 		defer res.Body.Close()
 		if err := googleapi.CheckResponse(res); err != nil {
-			return nil, err
+			return nil, gensupport.WrapError(err)
 		}
 	}
 	ret := &Message{
@@ -3685,9 +3693,9 @@ type UsersDraftsUpdateCall struct {
 
 // Update: Replaces a draft's content.
 //
-// - id: The ID of the draft to update.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the draft to update.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersDraftsService) Update(userId string, id string, draft *Draft) *UsersDraftsUpdateCall {
 	c := &UsersDraftsUpdateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -3814,17 +3822,17 @@ func (c *UsersDraftsUpdateCall) Do(opts ...googleapi.CallOption) (*Draft, error)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	rx := c.mediaInfo_.ResumableUpload(res.Header.Get("Location"))
 	if rx != nil {
@@ -3840,7 +3848,7 @@ func (c *UsersDraftsUpdateCall) Do(opts ...googleapi.CallOption) (*Draft, error)
 		}
 		defer res.Body.Close()
 		if err := googleapi.CheckResponse(res); err != nil {
-			return nil, err
+			return nil, gensupport.WrapError(err)
 		}
 	}
 	ret := &Draft{
@@ -3926,8 +3934,8 @@ type UsersHistoryListCall struct {
 // List: Lists the history of all changes to the given mailbox. History
 // results are returned in chronological order (increasing `historyId`).
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersHistoryService) List(userId string) *UsersHistoryListCall {
 	c := &UsersHistoryListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -3938,10 +3946,11 @@ func (r *UsersHistoryService) List(userId string) *UsersHistoryListCall {
 // types to be returned by the function
 //
 // Possible values:
-//   "messageAdded"
-//   "messageDeleted"
-//   "labelAdded"
-//   "labelRemoved"
+//
+//	"messageAdded"
+//	"messageDeleted"
+//	"labelAdded"
+//	"labelRemoved"
 func (c *UsersHistoryListCall) HistoryTypes(historyTypes ...string) *UsersHistoryListCall {
 	c.urlParams_.SetMulti("historyTypes", append([]string{}, historyTypes...))
 	return c
@@ -4062,17 +4071,17 @@ func (c *UsersHistoryListCall) Do(opts ...googleapi.CallOption) (*ListHistoryRes
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListHistoryResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -4191,8 +4200,8 @@ type UsersLabelsCreateCall struct {
 
 // Create: Creates a new label.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersLabelsService) Create(userId string, label *Label) *UsersLabelsCreateCall {
 	c := &UsersLabelsCreateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -4267,17 +4276,17 @@ func (c *UsersLabelsCreateCall) Do(opts ...googleapi.CallOption) (*Label, error)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Label{
 		ServerResponse: googleapi.ServerResponse{
@@ -4337,9 +4346,9 @@ type UsersLabelsDeleteCall struct {
 // Delete: Immediately and permanently deletes the specified label and
 // removes it from any messages and threads that it is applied to.
 //
-// - id: The ID of the label to delete.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the label to delete.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersLabelsService) Delete(userId string, id string) *UsersLabelsDeleteCall {
 	c := &UsersLabelsDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -4405,7 +4414,7 @@ func (c *UsersLabelsDeleteCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -4456,9 +4465,9 @@ type UsersLabelsGetCall struct {
 
 // Get: Gets the specified label.
 //
-// - id: The ID of the label to retrieve.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the label to retrieve.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersLabelsService) Get(userId string, id string) *UsersLabelsGetCall {
 	c := &UsersLabelsGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -4542,17 +4551,17 @@ func (c *UsersLabelsGetCall) Do(opts ...googleapi.CallOption) (*Label, error) {
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Label{
 		ServerResponse: googleapi.ServerResponse{
@@ -4617,8 +4626,8 @@ type UsersLabelsListCall struct {
 
 // List: Lists all labels in the user's mailbox.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersLabelsService) List(userId string) *UsersLabelsListCall {
 	c := &UsersLabelsListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -4700,17 +4709,17 @@ func (c *UsersLabelsListCall) Do(opts ...googleapi.CallOption) (*ListLabelsRespo
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListLabelsResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -4769,9 +4778,9 @@ type UsersLabelsPatchCall struct {
 
 // Patch: Patch the specified label.
 //
-// - id: The ID of the label to update.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the label to update.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersLabelsService) Patch(userId string, id string, label *Label) *UsersLabelsPatchCall {
 	c := &UsersLabelsPatchCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -4848,17 +4857,17 @@ func (c *UsersLabelsPatchCall) Do(opts ...googleapi.CallOption) (*Label, error) 
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Label{
 		ServerResponse: googleapi.ServerResponse{
@@ -4925,9 +4934,9 @@ type UsersLabelsUpdateCall struct {
 
 // Update: Updates the specified label.
 //
-// - id: The ID of the label to update.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the label to update.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersLabelsService) Update(userId string, id string, label *Label) *UsersLabelsUpdateCall {
 	c := &UsersLabelsUpdateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5004,17 +5013,17 @@ func (c *UsersLabelsUpdateCall) Do(opts ...googleapi.CallOption) (*Label, error)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Label{
 		ServerResponse: googleapi.ServerResponse{
@@ -5082,8 +5091,8 @@ type UsersMessagesBatchDeleteCall struct {
 // guarantees that messages were not already deleted or even existed at
 // all.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) BatchDelete(userId string, batchdeletemessagesrequest *BatchDeleteMessagesRequest) *UsersMessagesBatchDeleteCall {
 	c := &UsersMessagesBatchDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5153,7 +5162,7 @@ func (c *UsersMessagesBatchDeleteCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -5197,8 +5206,8 @@ type UsersMessagesBatchModifyCall struct {
 
 // BatchModify: Modifies the labels on the specified messages.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) BatchModify(userId string, batchmodifymessagesrequest *BatchModifyMessagesRequest) *UsersMessagesBatchModifyCall {
 	c := &UsersMessagesBatchModifyCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5268,7 +5277,7 @@ func (c *UsersMessagesBatchModifyCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -5314,9 +5323,9 @@ type UsersMessagesDeleteCall struct {
 // Delete: Immediately and permanently deletes the specified message.
 // This operation cannot be undone. Prefer `messages.trash` instead.
 //
-// - id: The ID of the message to delete.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the message to delete.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Delete(userId string, id string) *UsersMessagesDeleteCall {
 	c := &UsersMessagesDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5382,7 +5391,7 @@ func (c *UsersMessagesDeleteCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -5431,12 +5440,12 @@ type UsersMessagesGetCall struct {
 
 // Get: Gets the specified message.
 //
-// - id: The ID of the message to retrieve. This ID is usually retrieved
-//   using `messages.list`. The ID is also contained in the result when
-//   a message is inserted (`messages.insert`) or imported
-//   (`messages.import`).
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the message to retrieve. This ID is usually retrieved
+//     using `messages.list`. The ID is also contained in the result when
+//     a message is inserted (`messages.insert`) or imported
+//     (`messages.import`).
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Get(userId string, id string) *UsersMessagesGetCall {
 	c := &UsersMessagesGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5448,17 +5457,25 @@ func (r *UsersMessagesService) Get(userId string, id string) *UsersMessagesGetCa
 // message in.
 //
 // Possible values:
-//   "minimal" - Returns only email message ID and labels; does not
+//
+//	"minimal" - Returns only email message ID and labels; does not
+//
 // return the email headers, body, or payload.
-//   "full" (default) - Returns the full email message data with body
+//
+//	"full" (default) - Returns the full email message data with body
+//
 // content parsed in the `payload` field; the `raw` field is not used.
 // Format cannot be used when accessing the api using the gmail.metadata
 // scope.
-//   "raw" - Returns the full email message data with body content in
+//
+//	"raw" - Returns the full email message data with body content in
+//
 // the `raw` field as a base64url encoded string; the `payload` field is
 // not used. Format cannot be used when accessing the api using the
 // gmail.metadata scope.
-//   "metadata" - Returns only email message ID, labels, and email
+//
+//	"metadata" - Returns only email message ID, labels, and email
+//
 // headers.
 func (c *UsersMessagesGetCall) Format(format string) *UsersMessagesGetCall {
 	c.urlParams_.Set("format", format)
@@ -5548,17 +5565,17 @@ func (c *UsersMessagesGetCall) Do(opts ...googleapi.CallOption) (*Message, error
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Message{
 		ServerResponse: googleapi.ServerResponse{
@@ -5656,8 +5673,8 @@ type UsersMessagesImportCall struct {
 // This function doesn't trigger forwarding rules or filters set up by
 // the user.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Import(userId string, message *Message) *UsersMessagesImportCall {
 	c := &UsersMessagesImportCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5677,9 +5694,13 @@ func (c *UsersMessagesImportCall) Deleted(deleted bool) *UsersMessagesImportCall
 // Source for Gmail's internal date of the message.
 //
 // Possible values:
-//   "receivedTime" - Internal message date set to current time when
+//
+//	"receivedTime" - Internal message date set to current time when
+//
 // received by Gmail.
-//   "dateHeader" (default) - Internal message time based on 'Date'
+//
+//	"dateHeader" (default) - Internal message time based on 'Date'
+//
 // header in email, when valid.
 func (c *UsersMessagesImportCall) InternalDateSource(internalDateSource string) *UsersMessagesImportCall {
 	c.urlParams_.Set("internalDateSource", internalDateSource)
@@ -5819,17 +5840,17 @@ func (c *UsersMessagesImportCall) Do(opts ...googleapi.CallOption) (*Message, er
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	rx := c.mediaInfo_.ResumableUpload(res.Header.Get("Location"))
 	if rx != nil {
@@ -5845,7 +5866,7 @@ func (c *UsersMessagesImportCall) Do(opts ...googleapi.CallOption) (*Message, er
 		}
 		defer res.Body.Close()
 		if err := googleapi.CheckResponse(res); err != nil {
-			return nil, err
+			return nil, gensupport.WrapError(err)
 		}
 	}
 	ret := &Message{
@@ -5957,8 +5978,8 @@ type UsersMessagesInsertCall struct {
 // similar to `IMAP APPEND`, bypassing most scanning and classification.
 // Does not send a message.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Insert(userId string, message *Message) *UsersMessagesInsertCall {
 	c := &UsersMessagesInsertCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -5978,9 +5999,13 @@ func (c *UsersMessagesInsertCall) Deleted(deleted bool) *UsersMessagesInsertCall
 // Source for Gmail's internal date of the message.
 //
 // Possible values:
-//   "receivedTime" (default) - Internal message date set to current
+//
+//	"receivedTime" (default) - Internal message date set to current
+//
 // time when received by Gmail.
-//   "dateHeader" - Internal message time based on 'Date' header in
+//
+//	"dateHeader" - Internal message time based on 'Date' header in
+//
 // email, when valid.
 func (c *UsersMessagesInsertCall) InternalDateSource(internalDateSource string) *UsersMessagesInsertCall {
 	c.urlParams_.Set("internalDateSource", internalDateSource)
@@ -6104,17 +6129,17 @@ func (c *UsersMessagesInsertCall) Do(opts ...googleapi.CallOption) (*Message, er
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	rx := c.mediaInfo_.ResumableUpload(res.Header.Get("Location"))
 	if rx != nil {
@@ -6130,7 +6155,7 @@ func (c *UsersMessagesInsertCall) Do(opts ...googleapi.CallOption) (*Message, er
 		}
 		defer res.Body.Close()
 		if err := googleapi.CheckResponse(res); err != nil {
-			return nil, err
+			return nil, gensupport.WrapError(err)
 		}
 	}
 	ret := &Message{
@@ -6227,8 +6252,8 @@ type UsersMessagesListCall struct {
 
 // List: Lists the messages in the user's mailbox.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) List(userId string) *UsersMessagesListCall {
 	c := &UsersMessagesListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -6349,17 +6374,17 @@ func (c *UsersMessagesListCall) Do(opts ...googleapi.CallOption) (*ListMessagesR
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListMessagesResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -6467,9 +6492,9 @@ type UsersMessagesModifyCall struct {
 
 // Modify: Modifies the labels on the specified message.
 //
-// - id: The ID of the message to modify.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the message to modify.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Modify(userId string, id string, modifymessagerequest *ModifyMessageRequest) *UsersMessagesModifyCall {
 	c := &UsersMessagesModifyCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -6546,17 +6571,17 @@ func (c *UsersMessagesModifyCall) Do(opts ...googleapi.CallOption) (*Message, er
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Message{
 		ServerResponse: googleapi.ServerResponse{
@@ -6623,8 +6648,8 @@ type UsersMessagesSendCall struct {
 // Send: Sends the specified message to the recipients in the `To`,
 // `Cc`, and `Bcc` headers.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Send(userId string, message *Message) *UsersMessagesSendCall {
 	c := &UsersMessagesSendCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -6749,17 +6774,17 @@ func (c *UsersMessagesSendCall) Do(opts ...googleapi.CallOption) (*Message, erro
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	rx := c.mediaInfo_.ResumableUpload(res.Header.Get("Location"))
 	if rx != nil {
@@ -6775,7 +6800,7 @@ func (c *UsersMessagesSendCall) Do(opts ...googleapi.CallOption) (*Message, erro
 		}
 		defer res.Body.Close()
 		if err := googleapi.CheckResponse(res); err != nil {
-			return nil, err
+			return nil, gensupport.WrapError(err)
 		}
 	}
 	ret := &Message{
@@ -6854,9 +6879,9 @@ type UsersMessagesTrashCall struct {
 
 // Trash: Moves the specified message to the trash.
 //
-// - id: The ID of the message to Trash.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the message to Trash.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Trash(userId string, id string) *UsersMessagesTrashCall {
 	c := &UsersMessagesTrashCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -6927,17 +6952,17 @@ func (c *UsersMessagesTrashCall) Do(opts ...googleapi.CallOption) (*Message, err
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Message{
 		ServerResponse: googleapi.ServerResponse{
@@ -6999,9 +7024,9 @@ type UsersMessagesUntrashCall struct {
 
 // Untrash: Removes the specified message from the trash.
 //
-// - id: The ID of the message to remove from Trash.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the message to remove from Trash.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesService) Untrash(userId string, id string) *UsersMessagesUntrashCall {
 	c := &UsersMessagesUntrashCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -7072,17 +7097,17 @@ func (c *UsersMessagesUntrashCall) Do(opts ...googleapi.CallOption) (*Message, e
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Message{
 		ServerResponse: googleapi.ServerResponse{
@@ -7146,10 +7171,10 @@ type UsersMessagesAttachmentsGetCall struct {
 
 // Get: Gets the specified message attachment.
 //
-// - id: The ID of the attachment.
-// - messageId: The ID of the message containing the attachment.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the attachment.
+//   - messageId: The ID of the message containing the attachment.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersMessagesAttachmentsService) Get(userId string, messageId string, id string) *UsersMessagesAttachmentsGetCall {
 	c := &UsersMessagesAttachmentsGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -7235,17 +7260,17 @@ func (c *UsersMessagesAttachmentsGetCall) Do(opts ...googleapi.CallOption) (*Mes
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &MessagePartBody{
 		ServerResponse: googleapi.ServerResponse{
@@ -7318,8 +7343,8 @@ type UsersSettingsGetAutoForwardingCall struct {
 // GetAutoForwarding: Gets the auto-forwarding setting for the specified
 // account.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) GetAutoForwarding(userId string) *UsersSettingsGetAutoForwardingCall {
 	c := &UsersSettingsGetAutoForwardingCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -7401,17 +7426,17 @@ func (c *UsersSettingsGetAutoForwardingCall) Do(opts ...googleapi.CallOption) (*
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &AutoForwarding{
 		ServerResponse: googleapi.ServerResponse{
@@ -7468,8 +7493,8 @@ type UsersSettingsGetImapCall struct {
 
 // GetImap: Gets IMAP settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) GetImap(userId string) *UsersSettingsGetImapCall {
 	c := &UsersSettingsGetImapCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -7551,17 +7576,17 @@ func (c *UsersSettingsGetImapCall) Do(opts ...googleapi.CallOption) (*ImapSettin
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ImapSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -7618,8 +7643,8 @@ type UsersSettingsGetLanguageCall struct {
 
 // GetLanguage: Gets language settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) GetLanguage(userId string) *UsersSettingsGetLanguageCall {
 	c := &UsersSettingsGetLanguageCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -7701,17 +7726,17 @@ func (c *UsersSettingsGetLanguageCall) Do(opts ...googleapi.CallOption) (*Langua
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &LanguageSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -7768,8 +7793,8 @@ type UsersSettingsGetPopCall struct {
 
 // GetPop: Gets POP settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) GetPop(userId string) *UsersSettingsGetPopCall {
 	c := &UsersSettingsGetPopCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -7851,17 +7876,17 @@ func (c *UsersSettingsGetPopCall) Do(opts ...googleapi.CallOption) (*PopSettings
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &PopSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -7918,8 +7943,8 @@ type UsersSettingsGetVacationCall struct {
 
 // GetVacation: Gets vacation responder settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) GetVacation(userId string) *UsersSettingsGetVacationCall {
 	c := &UsersSettingsGetVacationCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8001,17 +8026,17 @@ func (c *UsersSettingsGetVacationCall) Do(opts ...googleapi.CallOption) (*Vacati
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &VacationSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -8072,8 +8097,8 @@ type UsersSettingsUpdateAutoForwardingCall struct {
 // service account clients that have been delegated domain-wide
 // authority.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) UpdateAutoForwarding(userId string, autoforwarding *AutoForwarding) *UsersSettingsUpdateAutoForwardingCall {
 	c := &UsersSettingsUpdateAutoForwardingCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8148,17 +8173,17 @@ func (c *UsersSettingsUpdateAutoForwardingCall) Do(opts ...googleapi.CallOption)
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &AutoForwarding{
 		ServerResponse: googleapi.ServerResponse{
@@ -8215,8 +8240,8 @@ type UsersSettingsUpdateImapCall struct {
 
 // UpdateImap: Updates IMAP settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) UpdateImap(userId string, imapsettings *ImapSettings) *UsersSettingsUpdateImapCall {
 	c := &UsersSettingsUpdateImapCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8291,17 +8316,17 @@ func (c *UsersSettingsUpdateImapCall) Do(opts ...googleapi.CallOption) (*ImapSet
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ImapSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -8363,8 +8388,8 @@ type UsersSettingsUpdateLanguageCall struct {
 // by Gmail but have a close variant that is, and so the variant may be
 // chosen and saved instead.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) UpdateLanguage(userId string, languagesettings *LanguageSettings) *UsersSettingsUpdateLanguageCall {
 	c := &UsersSettingsUpdateLanguageCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8439,17 +8464,17 @@ func (c *UsersSettingsUpdateLanguageCall) Do(opts ...googleapi.CallOption) (*Lan
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &LanguageSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -8506,8 +8531,8 @@ type UsersSettingsUpdatePopCall struct {
 
 // UpdatePop: Updates POP settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) UpdatePop(userId string, popsettings *PopSettings) *UsersSettingsUpdatePopCall {
 	c := &UsersSettingsUpdatePopCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8582,17 +8607,17 @@ func (c *UsersSettingsUpdatePopCall) Do(opts ...googleapi.CallOption) (*PopSetti
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &PopSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -8649,8 +8674,8 @@ type UsersSettingsUpdateVacationCall struct {
 
 // UpdateVacation: Updates vacation responder settings.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsService) UpdateVacation(userId string, vacationsettings *VacationSettings) *UsersSettingsUpdateVacationCall {
 	c := &UsersSettingsUpdateVacationCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8725,17 +8750,17 @@ func (c *UsersSettingsUpdateVacationCall) Do(opts ...googleapi.CallOption) (*Vac
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &VacationSettings{
 		ServerResponse: googleapi.ServerResponse{
@@ -8803,8 +8828,8 @@ type UsersSettingsDelegatesCreateCall struct {
 // This method is only available to service account clients that have
 // been delegated domain-wide authority.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsDelegatesService) Create(userId string, delegate *Delegate) *UsersSettingsDelegatesCreateCall {
 	c := &UsersSettingsDelegatesCreateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -8879,17 +8904,17 @@ func (c *UsersSettingsDelegatesCreateCall) Do(opts ...googleapi.CallOption) (*De
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Delegate{
 		ServerResponse: googleapi.ServerResponse{
@@ -8951,10 +8976,10 @@ type UsersSettingsDelegatesDeleteCall struct {
 // is only available to service account clients that have been delegated
 // domain-wide authority.
 //
-// - delegateEmail: The email address of the user to be removed as a
-//   delegate.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - delegateEmail: The email address of the user to be removed as a
+//     delegate.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsDelegatesService) Delete(userId string, delegateEmail string) *UsersSettingsDelegatesDeleteCall {
 	c := &UsersSettingsDelegatesDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9020,7 +9045,7 @@ func (c *UsersSettingsDelegatesDeleteCall) Do(opts ...googleapi.CallOption) erro
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -9072,10 +9097,10 @@ type UsersSettingsDelegatesGetCall struct {
 // This method is only available to service account clients that have
 // been delegated domain-wide authority.
 //
-// - delegateEmail: The email address of the user whose delegate
-//   relationship is to be retrieved.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - delegateEmail: The email address of the user whose delegate
+//     relationship is to be retrieved.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsDelegatesService) Get(userId string, delegateEmail string) *UsersSettingsDelegatesGetCall {
 	c := &UsersSettingsDelegatesGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9159,17 +9184,17 @@ func (c *UsersSettingsDelegatesGetCall) Do(opts ...googleapi.CallOption) (*Deleg
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Delegate{
 		ServerResponse: googleapi.ServerResponse{
@@ -9235,8 +9260,8 @@ type UsersSettingsDelegatesListCall struct {
 // only available to service account clients that have been delegated
 // domain-wide authority.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsDelegatesService) List(userId string) *UsersSettingsDelegatesListCall {
 	c := &UsersSettingsDelegatesListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9318,17 +9343,17 @@ func (c *UsersSettingsDelegatesListCall) Do(opts ...googleapi.CallOption) (*List
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListDelegatesResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -9386,8 +9411,8 @@ type UsersSettingsFiltersCreateCall struct {
 // Create: Creates a filter. Note: you can only create a maximum of
 // 1,000 filters.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsFiltersService) Create(userId string, filter *Filter) *UsersSettingsFiltersCreateCall {
 	c := &UsersSettingsFiltersCreateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9462,17 +9487,17 @@ func (c *UsersSettingsFiltersCreateCall) Do(opts ...googleapi.CallOption) (*Filt
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Filter{
 		ServerResponse: googleapi.ServerResponse{
@@ -9529,9 +9554,9 @@ type UsersSettingsFiltersDeleteCall struct {
 
 // Delete: Immediately and permanently deletes the specified filter.
 //
-// - id: The ID of the filter to be deleted.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - id: The ID of the filter to be deleted.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsFiltersService) Delete(userId string, id string) *UsersSettingsFiltersDeleteCall {
 	c := &UsersSettingsFiltersDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9597,7 +9622,7 @@ func (c *UsersSettingsFiltersDeleteCall) Do(opts ...googleapi.CallOption) error 
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -9646,9 +9671,9 @@ type UsersSettingsFiltersGetCall struct {
 
 // Get: Gets a filter.
 //
-// - id: The ID of the filter to be fetched.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - id: The ID of the filter to be fetched.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsFiltersService) Get(userId string, id string) *UsersSettingsFiltersGetCall {
 	c := &UsersSettingsFiltersGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9732,17 +9757,17 @@ func (c *UsersSettingsFiltersGetCall) Do(opts ...googleapi.CallOption) (*Filter,
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Filter{
 		ServerResponse: googleapi.ServerResponse{
@@ -9806,8 +9831,8 @@ type UsersSettingsFiltersListCall struct {
 
 // List: Lists the message filters of a Gmail user.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsFiltersService) List(userId string) *UsersSettingsFiltersListCall {
 	c := &UsersSettingsFiltersListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -9889,17 +9914,17 @@ func (c *UsersSettingsFiltersListCall) Do(opts ...googleapi.CallOption) (*ListFi
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListFiltersResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -9961,8 +9986,8 @@ type UsersSettingsForwardingAddressesCreateCall struct {
 // method is only available to service account clients that have been
 // delegated domain-wide authority.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsForwardingAddressesService) Create(userId string, forwardingaddress *ForwardingAddress) *UsersSettingsForwardingAddressesCreateCall {
 	c := &UsersSettingsForwardingAddressesCreateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10037,17 +10062,17 @@ func (c *UsersSettingsForwardingAddressesCreateCall) Do(opts ...googleapi.CallOp
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ForwardingAddress{
 		ServerResponse: googleapi.ServerResponse{
@@ -10107,9 +10132,9 @@ type UsersSettingsForwardingAddressesDeleteCall struct {
 // available to service account clients that have been delegated
 // domain-wide authority.
 //
-// - forwardingEmail: The forwarding address to be deleted.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - forwardingEmail: The forwarding address to be deleted.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsForwardingAddressesService) Delete(userId string, forwardingEmail string) *UsersSettingsForwardingAddressesDeleteCall {
 	c := &UsersSettingsForwardingAddressesDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10175,7 +10200,7 @@ func (c *UsersSettingsForwardingAddressesDeleteCall) Do(opts ...googleapi.CallOp
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -10224,9 +10249,9 @@ type UsersSettingsForwardingAddressesGetCall struct {
 
 // Get: Gets the specified forwarding address.
 //
-// - forwardingEmail: The forwarding address to be retrieved.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - forwardingEmail: The forwarding address to be retrieved.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsForwardingAddressesService) Get(userId string, forwardingEmail string) *UsersSettingsForwardingAddressesGetCall {
 	c := &UsersSettingsForwardingAddressesGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10310,17 +10335,17 @@ func (c *UsersSettingsForwardingAddressesGetCall) Do(opts ...googleapi.CallOptio
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ForwardingAddress{
 		ServerResponse: googleapi.ServerResponse{
@@ -10384,8 +10409,8 @@ type UsersSettingsForwardingAddressesListCall struct {
 
 // List: Lists the forwarding addresses for the specified account.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsForwardingAddressesService) List(userId string) *UsersSettingsForwardingAddressesListCall {
 	c := &UsersSettingsForwardingAddressesListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10467,17 +10492,17 @@ func (c *UsersSettingsForwardingAddressesListCall) Do(opts ...googleapi.CallOpti
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListForwardingAddressesResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -10543,8 +10568,8 @@ type UsersSettingsSendAsCreateCall struct {
 // only available to service account clients that have been delegated
 // domain-wide authority.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) Create(userId string, sendas *SendAs) *UsersSettingsSendAsCreateCall {
 	c := &UsersSettingsSendAsCreateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10619,17 +10644,17 @@ func (c *UsersSettingsSendAsCreateCall) Do(opts ...googleapi.CallOption) (*SendA
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &SendAs{
 		ServerResponse: googleapi.ServerResponse{
@@ -10689,9 +10714,9 @@ type UsersSettingsSendAsDeleteCall struct {
 // available to service account clients that have been delegated
 // domain-wide authority.
 //
-// - sendAsEmail: The send-as alias to be deleted.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - sendAsEmail: The send-as alias to be deleted.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) Delete(userId string, sendAsEmail string) *UsersSettingsSendAsDeleteCall {
 	c := &UsersSettingsSendAsDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10757,7 +10782,7 @@ func (c *UsersSettingsSendAsDeleteCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -10807,9 +10832,9 @@ type UsersSettingsSendAsGetCall struct {
 // Get: Gets the specified send-as alias. Fails with an HTTP 404 error
 // if the specified address is not a member of the collection.
 //
-// - sendAsEmail: The send-as alias to be retrieved.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - sendAsEmail: The send-as alias to be retrieved.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) Get(userId string, sendAsEmail string) *UsersSettingsSendAsGetCall {
 	c := &UsersSettingsSendAsGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -10893,17 +10918,17 @@ func (c *UsersSettingsSendAsGetCall) Do(opts ...googleapi.CallOption) (*SendAs, 
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &SendAs{
 		ServerResponse: googleapi.ServerResponse{
@@ -10969,8 +10994,8 @@ type UsersSettingsSendAsListCall struct {
 // includes the primary send-as address associated with the account as
 // well as any custom "from" aliases.
 //
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) List(userId string) *UsersSettingsSendAsListCall {
 	c := &UsersSettingsSendAsListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11052,17 +11077,17 @@ func (c *UsersSettingsSendAsListCall) Do(opts ...googleapi.CallOption) (*ListSen
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListSendAsResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -11120,9 +11145,9 @@ type UsersSettingsSendAsPatchCall struct {
 
 // Patch: Patch the specified send-as alias.
 //
-// - sendAsEmail: The send-as alias to be updated.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - sendAsEmail: The send-as alias to be updated.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) Patch(userId string, sendAsEmail string, sendas *SendAs) *UsersSettingsSendAsPatchCall {
 	c := &UsersSettingsSendAsPatchCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11199,17 +11224,17 @@ func (c *UsersSettingsSendAsPatchCall) Do(opts ...googleapi.CallOption) (*SendAs
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &SendAs{
 		ServerResponse: googleapi.ServerResponse{
@@ -11279,9 +11304,9 @@ type UsersSettingsSendAsUpdateCall struct {
 // service account clients that have been delegated domain-wide
 // authority.
 //
-// - sendAsEmail: The send-as alias to be updated.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - sendAsEmail: The send-as alias to be updated.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) Update(userId string, sendAsEmail string, sendas *SendAs) *UsersSettingsSendAsUpdateCall {
 	c := &UsersSettingsSendAsUpdateCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11358,17 +11383,17 @@ func (c *UsersSettingsSendAsUpdateCall) Do(opts ...googleapi.CallOption) (*SendA
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &SendAs{
 		ServerResponse: googleapi.ServerResponse{
@@ -11436,9 +11461,9 @@ type UsersSettingsSendAsVerifyCall struct {
 // only available to service account clients that have been delegated
 // domain-wide authority.
 //
-// - sendAsEmail: The send-as alias to be verified.
-// - userId: User's email address. The special value "me" can be used to
-//   indicate the authenticated user.
+//   - sendAsEmail: The send-as alias to be verified.
+//   - userId: User's email address. The special value "me" can be used to
+//     indicate the authenticated user.
 func (r *UsersSettingsSendAsService) Verify(userId string, sendAsEmail string) *UsersSettingsSendAsVerifyCall {
 	c := &UsersSettingsSendAsVerifyCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11504,7 +11529,7 @@ func (c *UsersSettingsSendAsVerifyCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -11554,11 +11579,11 @@ type UsersSettingsSendAsSmimeInfoDeleteCall struct {
 // Delete: Deletes the specified S/MIME config for the specified send-as
 // alias.
 //
-// - id: The immutable ID for the SmimeInfo.
-// - sendAsEmail: The email address that appears in the "From:" header
-//   for mail sent using this alias.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The immutable ID for the SmimeInfo.
+//   - sendAsEmail: The email address that appears in the "From:" header
+//     for mail sent using this alias.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersSettingsSendAsSmimeInfoService) Delete(userId string, sendAsEmail string, id string) *UsersSettingsSendAsSmimeInfoDeleteCall {
 	c := &UsersSettingsSendAsSmimeInfoDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11626,7 +11651,7 @@ func (c *UsersSettingsSendAsSmimeInfoDeleteCall) Do(opts ...googleapi.CallOption
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -11685,11 +11710,11 @@ type UsersSettingsSendAsSmimeInfoGetCall struct {
 // Get: Gets the specified S/MIME config for the specified send-as
 // alias.
 //
-// - id: The immutable ID for the SmimeInfo.
-// - sendAsEmail: The email address that appears in the "From:" header
-//   for mail sent using this alias.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The immutable ID for the SmimeInfo.
+//   - sendAsEmail: The email address that appears in the "From:" header
+//     for mail sent using this alias.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersSettingsSendAsSmimeInfoService) Get(userId string, sendAsEmail string, id string) *UsersSettingsSendAsSmimeInfoGetCall {
 	c := &UsersSettingsSendAsSmimeInfoGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11775,17 +11800,17 @@ func (c *UsersSettingsSendAsSmimeInfoGetCall) Do(opts ...googleapi.CallOption) (
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &SmimeInfo{
 		ServerResponse: googleapi.ServerResponse{
@@ -11859,10 +11884,10 @@ type UsersSettingsSendAsSmimeInfoInsertCall struct {
 // Insert: Insert (upload) the given S/MIME config for the specified
 // send-as alias. Note that pkcs12 format is required for the key.
 //
-// - sendAsEmail: The email address that appears in the "From:" header
-//   for mail sent using this alias.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - sendAsEmail: The email address that appears in the "From:" header
+//     for mail sent using this alias.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersSettingsSendAsSmimeInfoService) Insert(userId string, sendAsEmail string, smimeinfo *SmimeInfo) *UsersSettingsSendAsSmimeInfoInsertCall {
 	c := &UsersSettingsSendAsSmimeInfoInsertCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -11939,17 +11964,17 @@ func (c *UsersSettingsSendAsSmimeInfoInsertCall) Do(opts ...googleapi.CallOption
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &SmimeInfo{
 		ServerResponse: googleapi.ServerResponse{
@@ -12015,10 +12040,10 @@ type UsersSettingsSendAsSmimeInfoListCall struct {
 
 // List: Lists S/MIME configs for the specified send-as alias.
 //
-// - sendAsEmail: The email address that appears in the "From:" header
-//   for mail sent using this alias.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - sendAsEmail: The email address that appears in the "From:" header
+//     for mail sent using this alias.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersSettingsSendAsSmimeInfoService) List(userId string, sendAsEmail string) *UsersSettingsSendAsSmimeInfoListCall {
 	c := &UsersSettingsSendAsSmimeInfoListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -12102,17 +12127,17 @@ func (c *UsersSettingsSendAsSmimeInfoListCall) Do(opts ...googleapi.CallOption) 
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListSmimeInfoResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -12179,11 +12204,11 @@ type UsersSettingsSendAsSmimeInfoSetDefaultCall struct {
 // SetDefault: Sets the default S/MIME config for the specified send-as
 // alias.
 //
-// - id: The immutable ID for the SmimeInfo.
-// - sendAsEmail: The email address that appears in the "From:" header
-//   for mail sent using this alias.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The immutable ID for the SmimeInfo.
+//   - sendAsEmail: The email address that appears in the "From:" header
+//     for mail sent using this alias.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersSettingsSendAsSmimeInfoService) SetDefault(userId string, sendAsEmail string, id string) *UsersSettingsSendAsSmimeInfoSetDefaultCall {
 	c := &UsersSettingsSendAsSmimeInfoSetDefaultCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -12251,7 +12276,7 @@ func (c *UsersSettingsSendAsSmimeInfoSetDefaultCall) Do(opts ...googleapi.CallOp
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -12309,9 +12334,9 @@ type UsersThreadsDeleteCall struct {
 // messages that belong to the thread are also deleted. This operation
 // cannot be undone. Prefer `threads.trash` instead.
 //
-// - id: ID of the Thread to delete.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: ID of the Thread to delete.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersThreadsService) Delete(userId string, id string) *UsersThreadsDeleteCall {
 	c := &UsersThreadsDeleteCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -12377,7 +12402,7 @@ func (c *UsersThreadsDeleteCall) Do(opts ...googleapi.CallOption) error {
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return err
+		return gensupport.WrapError(err)
 	}
 	return nil
 	// {
@@ -12426,9 +12451,9 @@ type UsersThreadsGetCall struct {
 
 // Get: Gets the specified thread.
 //
-// - id: The ID of the thread to retrieve.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the thread to retrieve.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersThreadsService) Get(userId string, id string) *UsersThreadsGetCall {
 	c := &UsersThreadsGetCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -12440,13 +12465,19 @@ func (r *UsersThreadsService) Get(userId string, id string) *UsersThreadsGetCall
 // messages in.
 //
 // Possible values:
-//   "full" (default) - Returns the full email message data with body
+//
+//	"full" (default) - Returns the full email message data with body
+//
 // content parsed in the `payload` field; the `raw` field is not used.
 // Format cannot be used when accessing the api using the gmail.metadata
 // scope.
-//   "metadata" - Returns only email message IDs, labels, and email
+//
+//	"metadata" - Returns only email message IDs, labels, and email
+//
 // headers.
-//   "minimal" - Returns only email message IDs and labels; does not
+//
+//	"minimal" - Returns only email message IDs and labels; does not
+//
 // return the email headers, body, or payload.
 func (c *UsersThreadsGetCall) Format(format string) *UsersThreadsGetCall {
 	c.urlParams_.Set("format", format)
@@ -12536,17 +12567,17 @@ func (c *UsersThreadsGetCall) Do(opts ...googleapi.CallOption) (*Thread, error) 
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Thread{
 		ServerResponse: googleapi.ServerResponse{
@@ -12635,8 +12666,8 @@ type UsersThreadsListCall struct {
 
 // List: Lists the threads in the user's mailbox.
 //
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersThreadsService) List(userId string) *UsersThreadsListCall {
 	c := &UsersThreadsListCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -12757,17 +12788,17 @@ func (c *UsersThreadsListCall) Do(opts ...googleapi.CallOption) (*ListThreadsRes
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &ListThreadsResponse{
 		ServerResponse: googleapi.ServerResponse{
@@ -12876,9 +12907,9 @@ type UsersThreadsModifyCall struct {
 // Modify: Modifies the labels applied to the thread. This applies to
 // all messages in the thread.
 //
-// - id: The ID of the thread to modify.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the thread to modify.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersThreadsService) Modify(userId string, id string, modifythreadrequest *ModifyThreadRequest) *UsersThreadsModifyCall {
 	c := &UsersThreadsModifyCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -12955,17 +12986,17 @@ func (c *UsersThreadsModifyCall) Do(opts ...googleapi.CallOption) (*Thread, erro
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Thread{
 		ServerResponse: googleapi.ServerResponse{
@@ -13031,9 +13062,9 @@ type UsersThreadsTrashCall struct {
 // Trash: Moves the specified thread to the trash. Any messages that
 // belong to the thread are also moved to the trash.
 //
-// - id: The ID of the thread to Trash.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the thread to Trash.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersThreadsService) Trash(userId string, id string) *UsersThreadsTrashCall {
 	c := &UsersThreadsTrashCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -13104,17 +13135,17 @@ func (c *UsersThreadsTrashCall) Do(opts ...googleapi.CallOption) (*Thread, error
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Thread{
 		ServerResponse: googleapi.ServerResponse{
@@ -13177,9 +13208,9 @@ type UsersThreadsUntrashCall struct {
 // Untrash: Removes the specified thread from the trash. Any messages
 // that belong to the thread are also removed from the trash.
 //
-// - id: The ID of the thread to remove from Trash.
-// - userId: The user's email address. The special value `me` can be
-//   used to indicate the authenticated user.
+//   - id: The ID of the thread to remove from Trash.
+//   - userId: The user's email address. The special value `me` can be
+//     used to indicate the authenticated user.
 func (r *UsersThreadsService) Untrash(userId string, id string) *UsersThreadsUntrashCall {
 	c := &UsersThreadsUntrashCall{s: r.s, urlParams_: make(gensupport.URLParams)}
 	c.userId = userId
@@ -13250,17 +13281,17 @@ func (c *UsersThreadsUntrashCall) Do(opts ...googleapi.CallOption) (*Thread, err
 		if res.Body != nil {
 			res.Body.Close()
 		}
-		return nil, &googleapi.Error{
+		return nil, gensupport.WrapError(&googleapi.Error{
 			Code:   res.StatusCode,
 			Header: res.Header,
-		}
+		})
 	}
 	if err != nil {
 		return nil, err
 	}
 	defer googleapi.CloseBody(res)
 	if err := googleapi.CheckResponse(res); err != nil {
-		return nil, err
+		return nil, gensupport.WrapError(err)
 	}
 	ret := &Thread{
 		ServerResponse: googleapi.ServerResponse{
